@@ -1,0 +1,149 @@
+<!-- templates/auth.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SleepShield - Authentication</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #6dd5ed;
+            margin-bottom: 10px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons button {
+            background-color: #6dd5ed;
+            color: #1e1e1e;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .tab-buttons button.active {
+            background-color: #2193b0;
+        }
+
+        form {
+            display: none;
+            flex-direction: column;
+        }
+
+        form.active {
+            display: flex;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+        }
+
+        button.submit-btn {
+            background-color: #6dd5ed;
+            color: #1e1e1e;
+            padding: 10px;
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button.submit-btn:hover {
+            background-color: #2193b0;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        p a {
+            color: #6dd5ed;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            color: #2193b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SleepShield</h1>
+
+        <div class="tab-buttons">
+            <button id="loginTab" class="active">Login</button>
+            <button id="registerTab">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="active" method="POST" action="/auth">
+            <input type="hidden" name="action" value="login">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" method="POST" action="/auth">
+            <input type="hidden" name="action" value="register">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+    </div>
+
+    <script>
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.add('active');
+            registerForm.classList.remove('active');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.add('active');
+            loginForm.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
