@@ -1,0 +1,124 @@
+<!-- templates/logs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sleep Logs - SleepShield</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6dd5ed;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #333;
+            color: #6dd5ed;
+        }
+
+        .risk-high {
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+
+        .risk-moderate {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .risk-low {
+            color: #4dff88;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6dd5ed;
+            color: #1e1e1e;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #2193b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 Sleep Logs</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Sleep Hours</th>
+                    <th>Interruptions</th>
+                    <th>Tiredness</th>
+                    <th>Screen Time (min)</th>
+                    <th>Risk Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log[2] }}</td>
+                        <td>{{ log[3] }}</td>
+                        <td>{{ log[4] }}</td>
+                        <td>{{ log[5] }}</td>
+                        <td>{{ log[6] }}</td>
+                        <td class="
+                            {% if log[7] == 'High' %}risk-high
+                            {% elif log[7] == 'Moderate' %}risk-moderate
+                            {% elif log[7] == 'Low' %}risk-low
+                            {% endif %}
+                        ">
+                            {{ log[7] }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="text-align: center;">
+            <a class="btn" href="{{ url_for('index') }}">⬅ Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
