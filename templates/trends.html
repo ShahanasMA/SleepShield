@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sleep Trends | SleepShield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        h1 {
+            color: #6dd5ed;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        /* Scrollable wrapper for the chart */
+        .chart-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-bottom: 10px;
+        }
+
+        .chart-scroll canvas {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 20px;
+            min-width: 1200px; /* Increase this width if you have more data */
+        }
+
+        a.btn {
+            display: inline-block;
+            background-color: #6dd5ed;
+            color: #1e1e1e;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 25px;
+        }
+
+        a.btn:hover {
+            background-color: #2193b0;
+        }
+
+        /* Optional: scrollbar styling */
+        .chart-scroll::-webkit-scrollbar {
+            height: 10px;
+        }
+        .chart-scroll::-webkit-scrollbar-thumb {
+            background: #6dd5ed;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Sleep Trends</h1>
+        <p>Visualize your sleep pattern to understand how your sleep hours, interruptions, and tiredness vary over time.</p>
+
+        <!-- Scrollable container -->
+        <div class="chart-scroll">
+            <canvas id="sleepChart" height="400"></canvas>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="btn">🏠 Back to Home</a>
+    </div>
+
+    <script>
+        const dates = {{ dates|tojson }};
+        const sleepHours = {{ sleep_hours|tojson }};
+        const interruptions = {{ interruptions|tojson }};
+        const tiredness = {{ tiredness|tojson }};
+
+        const ctx = document.getElementById('sleepChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Sleep Hours',
+                        data: sleepHours,
+                        borderColor: '#6dd5ed',
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Interruptions',
+                        data: interruptions,
+                        borderColor: '#ff6384',
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Tiredness Level',
+                        data: tiredness,
+                        borderColor: '#ffd166',
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: false,  // Disable auto-resizing so horizontal scroll works
+                plugins: {
+                    legend: {
+                        labels: { color: '#ffffff' }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Your Sleep Pattern Over Time',
+                        color: '#6dd5ed',
+                        font: { size: 18 }
+                    }
+                },
+                scales: {
+                    x: { ticks: { color: '#ffffff' } },
+                    y: { ticks: { color: '#ffffff' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
