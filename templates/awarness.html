@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sleep Awareness | SleepShield</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2193b0, #6dd5ed);
+            padding: 25px;
+            text-align: center;
+            color: #1e1e1e;
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            padding: 40px;
+            border-radius: 20px;
+            width: 85%;
+            max-width: 1000px;
+            margin: 40px auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        h1, h2, h3 {
+            color: #6dd5ed;
+        }
+
+        p, li {
+            color: #cccccc;
+        }
+
+        .disorder {
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .disorder img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .figcaption {
+            text-align: center;
+            color: #bbbbbb;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+        }
+
+        .hygiene {
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 35px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        a.btn {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            background-color: #6dd5ed;
+            color: #1e1e1e;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a.btn:hover {
+            background-color: #2193b0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #111;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                width: 92%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>💤 Sleep Awareness and Wellness | SleepShield</header>
+
+    <div class="container">
+        <h1>Understanding Sleep Disorders</h1>
+        <p>Sleep plays a vital role in maintaining our mental, physical, and emotional health. Lack of quality sleep can lead to chronic issues like <b>Insomnia</b>, <b>Hypersomnia</b>, and <b>Sleep Apnea</b>. Recognizing their symptoms and adopting preventive methods can greatly improve overall well-being.</p>
+
+        <!-- Disorder 1 -->
+        <div class="disorder">
+            <h2>1️⃣ Insomnia</h2>
+            <p><b>Definition:</b> Difficulty falling asleep or staying asleep, leading to poor-quality rest.</p>
+            <h3>Causes</h3>
+            <ul>
+                <li>Stress, anxiety, or depression</li>
+                <li>Irregular sleep schedules</li>
+                <li>Excessive caffeine or screen use before bed</li>
+            </ul>
+            <h3>Prevention Methods</h3>
+            <ul>
+                <li>Maintain consistent sleep timing</li>
+                <li>Practice relaxation techniques like meditation</li>
+                <li>Avoid stimulants and blue light before bedtime</li>
+            </ul>
+            <img src="{{ url_for('static', filename='Insomnia.png') }}" alt="Insomnia illustration">
+            <div class="figcaption">Fig. 1 – Insomnia: Trouble falling or staying asleep.</div>
+        </div>
+
+        <!-- Disorder 2 -->
+        <div class="disorder">
+            <h2>2️⃣ Hypersomnia</h2>
+            <p><b>Definition:</b> Feeling excessively sleepy during the day, even after long hours of sleep at night.</p>
+            <h3>Causes</h3>
+            <ul>
+                <li>Depression or low physical activity</li>
+                <li>Medication side effects</li>
+                <li>Sleep deprivation or irregular routines</li>
+            </ul>
+            <h3>Prevention Methods</h3>
+            <ul>
+                <li>Engage in daily physical activity</li>
+                <li>Follow a structured sleep-wake schedule</li>
+                <li>Avoid alcohol and sedatives</li>
+            </ul>
+            <img src="{{ url_for('static', filename='Hypersomnia.png') }}" alt="Hypersomnia illustration">
+            <div class="figcaption">Fig. 2 – Hypersomnia: Excessive sleepiness despite long sleep durations.</div>
+        </div>
+
+        <!-- Disorder 3 -->
+        <div class="disorder">
+            <h2>3️⃣ Sleep Apnea</h2>
+            <p><b>Definition:</b> A disorder in which breathing repeatedly stops and starts during sleep, leading to fatigue and snoring.</p>
+            <h3>Causes</h3>
+            <ul>
+                <li>Obesity or excess fat around the neck</li>
+                <li>Nasal congestion or airway blockage</li>
+                <li>Genetic predisposition</li>
+            </ul>
+            <h3>Prevention Methods</h3>
+            <ul>
+                <li>Maintain a healthy weight</li>
+                <li>Avoid sleeping on your back</li>
+                <li>Limit alcohol and smoking</li>
+            </ul>
+            <img src="{{ url_for('static', filename='Sleepapnea.png') }}" alt="Sleep Apnea illustration">
+            <div class="figcaption">Fig. 3 – Sleep Apnea: Interrupted breathing during sleep.</div>
+        </div>
+
+        <!-- Sleep Hygiene Section -->
+        <div class="hygiene">
+            <h2>🌙 Sleep Hygiene Practices</h2>
+            <p>Sleep hygiene refers to healthy habits and behaviors that help you sleep better. These small changes can make a big difference in your rest quality.</p>
+            <ul>
+                <li>🕒 Go to bed and wake up at the same time daily.</li>
+                <li>📵 Avoid using screens at least one hour before sleeping.</li>
+                <li>☕ Limit caffeine, nicotine, and heavy meals before bed.</li>
+                <li>🌿 Keep your bedroom cool, dark, and quiet.</li>
+                <li>💆 Practice relaxation (e.g., reading or deep breathing) before sleeping.</li>
+                <li>🏃 Engage in regular exercise during the day.</li>
+            </ul>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="btn">🏠 Back to Home</a>
+    </div>
+
+    <footer>© 2025 SleepShield | Promoting Healthy Sleep Awareness and Tracking</footer>
+</body>
+</html>
